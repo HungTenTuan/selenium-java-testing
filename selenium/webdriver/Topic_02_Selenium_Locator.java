@@ -60,15 +60,16 @@ public class Topic_02_Selenium_Locator {
         driver.findElement(By.linkText("Sitemap"));
         // Bat buoc lay tat ca cua text de tim kiem -> do chinh xac cao vi tuyet doi
         //it duoc su dung
+        //chi ho tro lay text cua link
     }
 
     @Test
-    public void TC_06_Partial_LinkText(){
+    public void TC_06_Partial_LinkText() {
         driver.findElement(By.partialLinkText("vendor account"));
         //Co the tim bang 1 phan cua text de tim kiem -> do chinh xac se khong cao vi tuong doi
         //it duoc su dung
+        //chi ho tro lay text cua link
     }
-
     @Test
     public void TC_07_Css(){
         //Co the cover duoc 6 truong hop tren
@@ -132,4 +133,6 @@ public class Topic_02_Selenium_Locator {
     public void afterClass(){
       //  driver.quit();
     }
+
+
 }

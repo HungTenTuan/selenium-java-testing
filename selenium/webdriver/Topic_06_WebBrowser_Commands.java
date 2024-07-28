@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class Topic_00_Template {
+public class Topic_06_WebBrowser_Commands {
     WebDriver driver;
 
     String projectPath = System.getProperty("user.dir");
