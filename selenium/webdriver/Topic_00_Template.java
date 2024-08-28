@@ -6,6 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Topic_00_Template {
@@ -22,7 +23,6 @@ public class Topic_00_Template {
         }else {
             System.getProperty("webdrive.gecko.driver", projectPath + "/browserDrivers/geckodriver");
         }
-
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -53,4 +53,17 @@ public class Topic_00_Template {
     public void afterClass(){
         driver.quit();
     }
+
+    public void sleepInSeconds(long timeSeconds){
+        try {
+            Thread.sleep(timeSeconds * 1000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String randomEmail(){
+        return "Hung" + new Random().nextInt(9999) + "@gmail.com";
+    }
+
 }

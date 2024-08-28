@@ -6,6 +6,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class Topic_05_Run_More_Browser {
     WebDriver driver;
 
@@ -19,16 +21,16 @@ public class Topic_05_Run_More_Browser {
 
     @Test
     public void TC_02_Run_On_Chrome() {
-       driver = new ChromeDriver();
-       driver.get("https://v2d2c.staging-ureruad.com/admin/campaigns/edit_design/13305");
-       driver.quit();
+        driver = new ChromeDriver();
+        driver.get("https://v2d2c.staging-ureruad.com/admin/campaigns/edit_design/13305");
+        driver.quit();
     }
 
     @Test
     public void TC_03_Run_On_Edge() {
-       driver = new EdgeDriver();
-       driver.get("https://v2d2c.staging-ureruad.com/admin/campaigns/edit_design/13305");
-       driver.quit();
+        driver = new EdgeDriver();
+        driver.get("https://v2d2c.staging-ureruad.com/admin/campaigns/edit_design/13305");
+        driver.quit();
     }
 
 }

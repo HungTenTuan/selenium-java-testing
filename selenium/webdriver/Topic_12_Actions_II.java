@@ -2,28 +2,22 @@ package webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Topic_06_WebBrowser_Commands {
+public class Topic_12_Actions_II {
     WebDriver driver;
-
-    String projectPath = System.getProperty("user.dir");
-
-    String osName = System.getProperty("os.name");
+    Actions actions;
 
     @BeforeClass
     public void beforeClass(){
-        if (osName.contains("Windows")){
-            System.getProperty("webdrive.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-        }else {
-            System.getProperty("webdrive.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-        }
-
         driver = new FirefoxDriver();
+        actions = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -53,4 +47,17 @@ public class Topic_06_WebBrowser_Commands {
     public void afterClass(){
         driver.quit();
     }
+
+    public void sleepInSeconds(long timeSeconds){
+        try {
+            Thread.sleep(timeSeconds * 1000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String randomEmail(){
+        return "Hung" + new Random().nextInt(9999) + "@gmail.com";
+    }
+
 }

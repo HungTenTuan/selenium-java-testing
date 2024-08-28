@@ -26,7 +26,7 @@ public class Topic_04_Xpath_Css {
             System.getProperty("webdrive.gecko.driver", projectPath + "/browserDrivers/geckodriver");
         }
 
-        driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
