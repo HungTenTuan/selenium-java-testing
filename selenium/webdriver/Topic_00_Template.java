@@ -2,15 +2,20 @@ package webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Topic_00_Template {
     WebDriver driver;
+    Actions actions;
+    WebDriverWait webDriverWait;
 
     String projectPath = System.getProperty("user.dir");
 
@@ -24,6 +29,8 @@ public class Topic_00_Template {
             System.getProperty("webdrive.gecko.driver", projectPath + "/browserDrivers/geckodriver");
         }
         driver = new FirefoxDriver();
+        actions = new Actions(driver);
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
