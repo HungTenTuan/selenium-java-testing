@@ -188,8 +188,62 @@ public class Topic_15_Tab_Window {
     }
 
     @Test
-    public void TC_03_(){
+    public void TC_03_Tab_Window(){
+        driver.get("https://dictionary.cambridge.org/vi/");
 
+        // click btn sign up => open new window
+        driver.findElement(By.xpath("//span[text()='Đăng nhập']//parent::span//following-sibling::span//span[text()='Đăng ký']")).click();
+        sleepInSeconds(2);
+
+        // switch to new window
+        Set<String> listId = driver.getWindowHandles();
+        for (String id:listId){
+            driver.switchTo().window(id);
+            if (driver.getTitle().equals("Sign Up")){
+                break;
+            }
+        }
+
+        // click btn sign up at new window
+        driver.findElement(By.xpath("//input[@value='Sign up']")).click();
+
+        // verify msg error
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@name='email']//following-sibling::span[text()='This field is required']")).getText(),"This field is required");
+        //close new window
+        driver.close();
+
+        // switch driver back parent tab
+        listId = driver.getWindowHandles();
+        for (String id:listId){
+            driver.switchTo().window(id);
+            if (driver.getTitle().equals("Cambridge Dictionary | Từ điển tiếng Anh, Bản dịch & Từ điển từ đồng nghĩa")){break;}
+        }
+
+        // type to input search
+        driver.findElement(By.id("searchword")).sendKeys("Automation");
+        // click btn search
+        driver.findElement(By.xpath("//button[@title='Tìm kiếm']")).click();
+        sleepInSeconds(2);
+        // verify text searched
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='cald4-1']//following-sibling::div[1]//span[text()='automation']")).getText(),"automation");
+    }
+
+    @Test
+    public void TC_04_Tab_Window(){
+        driver.get("https://courses.dce.harvard.edu/");
+        // click btn 'student login' => open new tab
+        driver.findElement(By.xpath("//a[@class='anon-only']")).click();
+        sleepInSeconds(4);
+
+        // switch to new tab
+        switchByTitle("Harvard Division of Continuing Education Login Portal");
+        driver.manage().window().maximize();
+        Assert.assertEquals(driver.getTitle(),"Harvard Division of Continuing Education Login Portal");
+        driver.close();
+
+        // switch back to parent tab
+        switchByTitle("DCE Course Search");
+        Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Authentication was not successful.  Please try again.')]")).getText(),"Authentication was not successful. Please try again.");
     }
 
 
