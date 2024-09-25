@@ -1,6 +1,8 @@
 package webdriver;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -73,4 +75,7 @@ public class Topic_00_Template {
         return "Hung" + new Random().nextInt(9999) + "@gmail.com";
     }
 
+    public WebElement getElementByXpath(String locator){
+        return driver.findElement(By.xpath(locator));
+    }
 }

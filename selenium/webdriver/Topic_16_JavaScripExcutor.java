@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -41,10 +42,10 @@ public class Topic_16_JavaScripExcutor {
     public void TC_01_(){
         // open page by url
         jsExecutor.executeScript("window.location = 'http://live.techpanda.org/'");
-        sleepInSecond(1);
+        sleepInSecond(3);
         String urlPage = (String) jsExecutor.executeScript("return document.URL;");
         Assert.assertEquals(urlPage,"http://live.techpanda.org/");
-        sleepInSecond(1);
+        sleepInSecond(2);
 
         // get domanin
         String domainPage = (String) jsExecutor.executeScript("return document.domain;");
@@ -57,7 +58,7 @@ public class Topic_16_JavaScripExcutor {
 
         // Add product SSung galaxy to cart
         jsExecutor.executeScript("arguments[0].click()",getElement("//img[@id='product-collection-image-3']//parent::a//following-sibling::div//button"));
-        sleepInSecond(1);
+        sleepInSecond(3);
 
         //verify msg
         String textExpected = "Samsung Galaxy was added to your shopping cart.";
@@ -90,7 +91,7 @@ public class Topic_16_JavaScripExcutor {
 
         // click subscribe btn
         jsExecutor.executeScript("arguments[0].click()",getElement("//span[text()='Subscribe']"));
-        sleepInSecond(1);
+        sleepInSecond(3);
 
         // verify msg
         String textExpected2 = "Thank you for your subscription.";
@@ -111,7 +112,7 @@ public class Topic_16_JavaScripExcutor {
     public void TC_02_(){
         // open browser
         jsExecutor.executeScript("window.location = 'https://automationfc.github.io/html5/index.html'");
-        sleepInSecond(1);
+        sleepInSecond(4);
 
         // verify url
         String urlHomePage = (String) jsExecutor.executeScript("return document.URL");
@@ -184,8 +185,40 @@ public class Topic_16_JavaScripExcutor {
 
     @Test
     public void TC_03_(){
+        // access URL
+        jsExecutor.executeScript("window.location = 'http://demo.guru99.com/v4'");
+        sleepInSecond(4);
+
+        // verify URL
+        String urlHomePage = (String) jsExecutor.executeScript("return document.URL;");
+        Assert.assertEquals(urlHomePage,"https://demo.guru99.com/v4/");
+        sleepInSecond(1);
+
+        // verify domain
+        String domainHomePahe = (String) jsExecutor.executeScript("return document.domain;");
+        Assert.assertEquals(domainHomePahe,"demo.guru99.com");
+        sleepInSecond(1);
+
+        // Sendkey into checkbox to login
+        jsExecutor.executeScript("arguments[0].setAttribute('value','mngr589257')",getElement("//input[@name='uid']"));
+        sleepInSecond(1);
+        jsExecutor.executeScript("arguments[0].setAttribute('value','EdUmygA')",getElement("//input[@name='password']"));
+        sleepInSecond(2);
+
+        // click btn login
+        jsExecutor.executeScript("arguments[0].click()",getElement("//input[@name='btnLogin']"));
+        sleepInSecond(2);
+
+        // click btn new Customer
+        jsExecutor.executeScript("arguments[0].click()",getElement("//a[text()='New Customer']"));
+        sleepInSecond(2);
+
+        // remove type date from datePicker
+        jsExecutor.executeScript("arguments[0].setAttribute('value','09/11/2024')",getElement("//input[@id='dob']"));
+        sleepInSecond(1);
 
     }
+
 
     @AfterClass
     public void afterClass(){
