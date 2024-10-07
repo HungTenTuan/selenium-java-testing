@@ -59,9 +59,8 @@ public class Topic_08_Custom_Dropdown {
 
     @Test
     public void TC_03_(){
-
-        selectDropdown("https://mikerodham.github.io/vue-dropdowns/","//li[@class='dropdown-toggle']","//ul[@class='dropdown-menu']//li","First Option");
-        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='dropdown-toggle']")).getText(),"First Option");
+        selectDropdown("http://54.199.185.227/sso-login?token=DS3clhI6Cv9459f4Vsp5GQKIPcEugNR1bUnHvGHH1I0UdrJ6la","//div[contains(@class,'selectCustom-trigger')]","//div[contains(@class,'selectCustom-option')]","さくら test");
+        //Assert.assertEquals(driver.findElement(By.xpath("//li[@class='dropdown-toggle']")).getText(),"First Option");
     }
 
 

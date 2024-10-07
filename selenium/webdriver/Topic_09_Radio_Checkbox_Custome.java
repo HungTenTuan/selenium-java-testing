@@ -122,9 +122,6 @@ public class Topic_09_Radio_Checkbox_Custome {
         Assert.assertTrue(driver.findElement(By.xpath("//div[@aria-label='Hồ Chí Minh' and @aria-checked='true']")).isDisplayed());
         Assert.assertEquals(radioDaNang.getAttribute("aria-checked"),"false");
         Assert.assertTrue(driver.findElement(By.xpath("//div[@aria-label='Đà Nẵng' and @aria-checked='false']")).isDisplayed());
-
-
-
     }
 
 

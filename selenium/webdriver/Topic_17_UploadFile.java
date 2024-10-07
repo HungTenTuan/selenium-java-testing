@@ -58,7 +58,7 @@ public class Topic_17_UploadFile {
         driver.findElement(By.xpath("//input[@name='files[]']")).sendKeys(img3FilePath);
         sleepInSeconds(2);*/
 
-        // upload single file with method sendkey
+        // upload multiple file with method sendkey
         driver.findElement(By.xpath("//input[@name='files[]']")).sendKeys(img1FilePath + "\n" + img2FilePath + "\n" + img3FilePath);
         sleepInSeconds(2);
 
